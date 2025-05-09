@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Personajes</title>
+</head>
+<body>
+    <!-- Componente personalizado para la barra de búsqueda-->
+    <character-search></character-search>
+    <!-- Contenedor para las card de los personajes-->
+    <div class="containerCards"></div>
+    <!-- Contenedor para el footer-->
+     <footer>
+        copy@ Johana Niño (Camper). CAMPUSLANDS
+     </footer>
+    <!-- carga de archivo (objeto), el componente de la barra de busqueda,
+    el componente que crea las card de personajes y el archivo principal-->
+    <script type="module" src="js/utils/characters.js"></script>
+    <script type="module" src="js/components/CharacterSearch.js" defer></script>
+    <script type="module" src="js/components/CharacterCard.js" defer></script>
+    <script type="module" src="js/app.js" defer></script>
+</body>
+</html>
