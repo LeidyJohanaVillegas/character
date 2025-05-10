@@ -3,6 +3,7 @@ class CharacterSearch extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
         this._characters = [];
+        console.log('datos: ', this._characters); //Verificar si tiene datos
 
         const wrapper = document.createElement('div');
         wrapper.classList.add('wrapper');

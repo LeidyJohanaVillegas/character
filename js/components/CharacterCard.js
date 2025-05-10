@@ -3,6 +3,8 @@ class CharacterCard extends HTMLElement {
         super();
         //se adjunta un shadow DOM en modo abierto para encapsular estilos y estructura
         this.attachShadow({mode: "open"});
+        this._characters = [];
+        console.log('datos: ', this._characters); //Verificar si tiene datos
     }
     //Metodo setter para recibir los datos de cada personaje
     set data(c) {
@@ -86,13 +88,30 @@ class CharacterCard extends HTMLElement {
                 <p><strong>Año de aparición: </strong>${c.yearOfAppearance}</p>
                 <p><strong>Descripción: </strong>${c.description}</p>
                 <div class="btn">
-                    <button>Ver más</button>
+                    <button id="seeMore">Ver más</button>
                 </div>
             </div>
         `;
+        // Asigna el evento aquí, después de haber seteado el contenido
+        this.shadowRoot.querySelector("#seeMore").addEventListener("click", () => this.seeMore(c));
+      }
+      
+    seeMore(characterData) {
+      // Crear un nuevo custom 
+      const moreCard = document.createElement('see-more-card');
+      moreCard.data = characterData; // SeeMoreCard también tiene un set data()
+      document.body.appendChild(moreCard); 
+      this.render();
     }
-    
-}
+    render() {
+       // Cerrar al hacer clic fuera del modal
+        this.shadowRoot.querySelector(".overlay").addEventListener("click", (e) => {
+          if (e.target.classList.contains("overlay")) {
+            this.remove();
+          }
+        });
+    }
+    }
 
 //Se registra el componente personalizado como <character-card>
 customElements.define('character-card', CharacterCard);

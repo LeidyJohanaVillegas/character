@@ -1,5 +1,8 @@
 import {characters} from './utils/characters.js'; //array de los personajes
 
+const searchComponent = document.querySelector('character-search');
+searchComponent.data = characters; // ¡Esto alimenta el componente con los personajes!
+
 //busca y selecciona el contenedor donde se van a insertar las card
 const container = document.querySelector('.containerCards');
 
@@ -23,3 +26,4 @@ document.querySelector('character-search').addEventListener('character-search', 
         container.appendChild(card);
     });
 });
+
